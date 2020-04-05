@@ -3,9 +3,6 @@ import os
 from dotenv import load_dotenv
 import argparse
 
-load_dotenv()
-TOKEN=os.getenv('TOKEN')
-
 
 def shorten_link(TOKEN, url):
   shortener_url = 'https://api-ssl.bitly.com/v4/bitlinks'
@@ -42,6 +39,9 @@ def count_clicks(TOKEN, link):
 
 
 if __name__ == '__main__':
+  load_dotenv()
+  TOKEN = os.getenv('TOKEN')
+
   parser = argparse.ArgumentParser(description='Позволяет работать с битли')
   parser.add_argument('link', help='Адресс ссылки')
   args = parser.parse_args()
