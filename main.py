@@ -40,7 +40,7 @@ def count_clicks(TOKEN, link):
 
 if __name__ == '__main__':
   load_dotenv()
-  TOKEN = os.getenv('TOKEN')
+  token = os.getenv('TOKEN')
 
   parser = argparse.ArgumentParser(description='Позволяет работать с битли')
   parser.add_argument('link', help='Адресс ссылки')
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
   if url.startswith('bit.ly/'):
     try:
-      clicks_count = count_clicks(TOKEN, url)
+      clicks_count = count_clicks(token, url)
     except requests.exceptions.HTTPError:
       print('Введена неправильная ссылка')
     else:
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
   if url.startswith('http'):
     try:
-      bitlink = shorten_link(TOKEN, url)
+      bitlink = shorten_link(token, url)
     except requests.exceptions.HTTPError:
       print('Введена неправильная ссылка')
     else:
